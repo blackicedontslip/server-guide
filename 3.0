@@ -1,0 +1,48 @@
+#include <iostream>
+#include <regex>
+#include <string>
+#include <bits/stdc++.h> 
+#include <vector>
+
+using namespace std;
+
+int solution(vector<int> A)
+{
+  
+  
+  
+  // declaring all infinite integers for any possibility
+   int diff = INT_MAX; 
+  
+   // computing for min diff while accounting for all possiblities 
+   for (int i=0; i<A.size(); i++) 
+      for (int j=i+1; j<A.size(); j++) 
+          if (abs(A[i] - A[j]) < diff) 
+                diff = abs(A[i] - A[j]); 
+  
+   // returning minimum absolute difference
+   return diff; 
+  
+  
+  
+}
+
+vector<int> toIntVector(string str)
+{
+  std::vector<int> out;
+  std::string i;
+  std::istringstream tokenStream(str);
+  while (std::getline(tokenStream, i, ','))
+  {
+    out.push_back(atoi(i.c_str()));
+  }
+  return out;
+}
+
+int main()
+{
+  // Read in from stdin, solve the problem, and write answer to stdout.
+  string AS;
+  cin >> AS;
+  cout << solution(toIntVector(AS));
+}
